@@ -15,6 +15,7 @@ public class MyAppFrame extends JFrame {
 
         JPanel panel = new MyPanel();
         getContentPane().add(panel);
+        panel.addKeyListener(new KeyListener());
         timer = new Timer(40, new ActionListener () {
         public void actionPerformed(ActionEvent ev) {
             getContentPane().repaint();

@@ -4,7 +4,7 @@ public class Field extends VectorOperation {
     private double [] ball;
     private Vector ballMove;
     private double desk;
-    private Vector deskMove;
+    public Vector deskMove;
 
 
     public Field(int w, int h) {
@@ -15,6 +15,13 @@ public class Field extends VectorOperation {
         play();
     }
 
+    public Vector getDeskMove() {
+        Vector a = new Vector();
+        for (int i = 0; i<deskMove.size (); i++){
+            a.add(deskMove.get(i));
+        }
+        return a;
+    }
     public double getDesk(){
         return desk;
     }
@@ -33,18 +40,18 @@ public class Field extends VectorOperation {
 
     private void setball(){
         ball = new double[2];
-        ball[0] = Math.floor(Math.random()*(w - 10) + 1);
-        ball[1] = Math.floor(Math.random()*(h - 10) + 1);
+        ball[0] = (w + r) / 2/*Math.floor(Math.random()*(w - 10) + 1)*/;
+        ball[1] = (h + r) / 2/*Math.floor(Math.random()*(h - 10) + 1)*/;
         ballMove = new Vector();
         ballMove.add(0/*Math.floor(0)*/);
         ballMove.add(10/*Math.floor(Math.random()*15)*/);
         velocity = nor(ballMove);
     }
 
-    private void setdesk(){
+    public void setdesk(){
         deskMove = new Vector();
-        desk = Math.floor(Math.random()*(w - 50) + 1);
-        deskMove.add(Math.floor(Math.random()*10));
+        desk = (w + 50) / 2/*Math.floor(Math.random()*(w - 50) + 1)*/;
+        deskMove.add(20/*Math.floor(Math.random()*10)*/);
         deskMove.add(0);
     }
 
